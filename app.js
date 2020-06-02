@@ -1,6 +1,5 @@
 var express = require("express");
 var app = express();
-let ejs = require("ejs");
 
 // set the view engine to ejs
 app.set("views", "./views"); // specify the views directory
