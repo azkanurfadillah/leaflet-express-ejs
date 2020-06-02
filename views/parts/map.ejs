@@ -5,11 +5,12 @@
 ></script>
 <script>
   const data = [
-    [-6.341387, 106.904108, "RPTRA Garuda"],
-    [-6.336638, 106.89733, "RPTRA Tamplas Bambu"],
-    [-6.330712, 106.897148, "RPTRA Payung Tunas Teratai"],
-    [-6.34398, 106.911716, "RPTRA Tunas Bangsa Bisa"],
-    [-6.319742, 106.902757, "RPTRA Bambu Petung"],
+    { lat: -6.341387, lang: 106.904108, name: "RPTRA Garuda" },
+    { lat: -6.336638, lang: 106.89733, name: "RPTRA Tamplas Bambu" },
+    { lat: -6.330712, lang: 106.897148, name: "RPTRA Payung Tunas Teratai" },
+    { lat: -6.34398, lang: 106.911716, name: "RPTRA Tunas Bangsa Bisa" },
+    { lat: -6.319742, lang: 106.902757, name: "RPTRA Bambu Petung" },
+    { lat: -6.344233, lang: 106.908389, name: "RPTRA Kusuma Baru" },
   ];
 
   const map = L.map("map").setView([-6.332506, 106.897917], 15);
@@ -22,9 +23,11 @@
     }
   ).addTo(map);
 
-  for (var i = 0; i < data.length; i++) {
-    marker = new L.marker([data[i][0], data[i][1]])
-      .bindPopup(`${data[i][2]}<br> tutup sementara`)
+  for (let i = 0; i < data.length; i++) {
+    marker = new L.marker([data[i].lat, data[i].lang])
+      .bindPopup(
+        `${data[i].name}<br> <span id=addt-info> tutup sementara </span>`
+      )
       .addTo(map);
   }
 </script>
