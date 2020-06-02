@@ -24,67 +24,33 @@
       body {
         padding-top: 50px;
       }
+
+      .active .nav-link {
+        text-decoration: underline;
+      }
       #map {
         height: 80vh;
+      }
+
+      footer p {
+        font-weight: 600;
+        font-size: 0.8em;
       }
     </style>
     <title>RPTRA Map</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">RPTRA MAP</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <header>
+      <%- include('../parts/header') -%>
+    </header>
 
-    <main><div id="map"></div></main>
-    <script
-      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""
-    ></script>
-    <script>
-      const data = [
-        [-6.341387, 106.904108, "RPTRA Garuda"],
-        [-6.336638, 106.89733, "RPTRA Tamplas Bambu"],
-        [-6.330712, 106.897148, "RPTRA Payung Tunas Teratai"],
-        [-6.34398, 106.911716, "RPTRA Tunas Bangsa Bisa"],
-        [-6.319742, 106.902757, "RPTRA Bambu Petung"],
-      ];
-      const map = L.map("map").setView([-6.332506, 106.897917], 15);
-      var OpenStreetMap_Mapnik = L.tileLayer(
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-          maxZoom: 19,
-          attribution:
-            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        }
-      ).addTo(map);
+    <main>
+      <div id="map"></div>
+    </main>
 
-      for (var i = 0; i < data.length; i++) {
-        marker = new L.marker([data[i][0], data[i][1]])
-          .bindPopup(`${data[i][2]}<br> tutup sementara`)
-          .openPopup()
-          .addTo(map);
-      }
-    </script>
+    <footer>
+      <%- include('../parts/footer'); -%>
+    </footer>
+    <%- include('../parts/map') -%>
   </body>
 </html>
